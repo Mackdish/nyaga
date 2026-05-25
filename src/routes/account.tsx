@@ -194,10 +194,18 @@ function AccountPage() {
         </section>
 
         <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {[
-            { icon: Heart, title: "Wishlist", desc: "Items you've saved", to: "/wishlist" as const },
-            { icon: LogOut, title: "Logout", desc: "End your session", action: handleLogout },
-          ].map((c) => {
+          {(
+            [
+              { icon: Heart, title: "Wishlist", desc: "Items you've saved", to: "/wishlist" as const },
+              { icon: LogOut, title: "Logout", desc: "End your session", action: handleLogout },
+            ] as Array<{
+              icon: typeof Heart;
+              title: string;
+              desc: string;
+              to?: "/wishlist";
+              action?: () => void;
+            }>
+          ).map((c) => {
             const inner = (
               <div className="p-5 bg-card border border-border rounded-xl hover:shadow-hover hover:-translate-y-0.5 transition-all">
                 <div className="h-10 w-10 grid place-items-center rounded-full bg-accent text-primary"><c.icon className="h-5 w-5" /></div>
