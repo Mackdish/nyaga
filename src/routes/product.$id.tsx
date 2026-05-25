@@ -80,20 +80,15 @@ function ProductPage() {
               fallback={<div className="grid place-items-center text-9xl">{product.image}</div>}
             />
           </div>
-          <div className="mt-3 grid grid-cols-4 gap-2">
-            {[(product.imageUrl ?? product.image), "📦", "✨", "🛡️"].map((g, i) => (
+          {product.imageUrl && (
+            <div className="mt-3 grid grid-cols-4 gap-2">
               <button
-                key={i}
-                className={cn("aspect-square rounded-lg border border-border overflow-hidden", product.bg, i === 0 && "ring-2 ring-primary")}
+                className={cn("aspect-square rounded-lg border border-border overflow-hidden ring-2 ring-primary", product.bg)}
               >
-                {typeof g === "string" && g.startsWith("http") ? (
-                  <img src={g} alt={`${product.name} thumbnail`} className="h-full w-full object-cover" />
-                ) : (
-                  <div className="grid place-items-center text-3xl">{g}</div>
-                )}
+                <img src={product.imageUrl} alt={`${product.name} thumbnail`} className="h-full w-full object-cover" />
               </button>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Info */}
